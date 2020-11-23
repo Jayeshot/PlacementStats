@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1.Given an array of size N containing 0s, 1s, and 2s; sort the array in ascending order."
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:layout_margin="5dp"
+        android:id="@+id/programming_question_question_title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Topic Name"
+        android:id="@+id/programming_question_topic_tag"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/SeeMore"
+        android:textSize="16dp"
+        android:textColor="@color/blue"
+        android:id="@+id/programming_question_SeeMore"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@color/black"
+        android:visibility="gone"
+        android:id="@+id/programming_question_image"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Solution"
+        android:id="@+id/programming_question_solution"/>
+
+</LinearLayout>
