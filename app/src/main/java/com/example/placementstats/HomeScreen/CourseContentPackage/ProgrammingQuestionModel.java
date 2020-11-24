@@ -1,7 +1,7 @@
 package com.example.placementstats.HomeScreen.CourseContentPackage;
 
 public class ProgrammingQuestionModel {
-    private String question,topicTag,url,solution;
+    private String question,topicTag,url,solution,answer;
 
     public ProgrammingQuestionModel() {
     }
@@ -11,6 +11,25 @@ public class ProgrammingQuestionModel {
         this.topicTag = topicTag;
         this.url = url;
         this.solution = solution;
+    }
+
+    public ProgrammingQuestionModel(String question, String answer) {
+        this.question = question;
+        this.answer = answer;
+    }
+
+    public ProgrammingQuestionModel(String question, String url, String answer) {
+        this.question = question;
+        this.url = url;
+        this.answer = answer;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 
     public String getQuestion() {

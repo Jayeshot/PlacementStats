@@ -66,7 +66,7 @@ public class CourseList extends AppCompatActivity {
 
     private void init() {
         Intent intent = getIntent();
-        courseName = intent.getStringExtra("courseName");
+        courseName = intent.getStringExtra(getString(R.string.CourseName));
 
         toolbar = findViewById(R.id.courseList_toolbar);
         recyclerView = findViewById(R.id.courseList_recyclerView);
@@ -74,6 +74,6 @@ public class CourseList extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        adapter = new CourseItemListAdapter(this,list);
+        adapter = new CourseItemListAdapter(this,list,courseName);
     }
 }

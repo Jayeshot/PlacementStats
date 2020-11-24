@@ -1,5 +1,6 @@
 package com.example.placementstats.HomeScreen.CourseContentPackage;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +12,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.placementstats.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +28,8 @@ public class CourseContent extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private List<ProgrammingQuestionModel> list;
     private Button btn;
+    private String courseName,courseId;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,8 @@ public class CourseContent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CourseContent.this,AddQuestion.class);
+                intent.putExtra(getString(R.string.CourseName),courseName);
+                intent.putExtra(getString(R.string.CourseId),courseId);
                 startActivity(intent);
 
             }
@@ -43,17 +53,29 @@ public class CourseContent extends AppCompatActivity {
     }
 
     private void getData() {
-        for(int i=0;i<10;i++){
-            ProgrammingQuestionModel model = new ProgrammingQuestionModel("1.Given an array of size N containing 0s, 1s, and 2s; sort the array in ascending order.","Array","https://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/","https://www.geeksforgeeks.org/sort-an-array-of-0s-1s-and-2s/");
-            list.add(model);
-        }
-        Toast.makeText(getApplicationContext(),list.size()+"",Toast.LENGTH_SHORT).show();
-        adapter.setData(list);
-        recyclerView.setAdapter(adapter);
+        databaseReference.child(courseName).child(courseId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot ds:snapshot.getChildren()){
+                    ProgrammingQuestionModel model = ds.getValue(ProgrammingQuestionModel.class);
+                    list.add(model);
+                }
+                adapter.setData(list);
+                recyclerView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
     private void init() {
+        Intent intent = getIntent();
+        courseName = intent.getStringExtra(getString(R.string.CourseName));
+        courseId = intent.getStringExtra(getString(R.string.CourseId));
         recyclerView = findViewById(R.id.course_content_recyclerView);
         list = new ArrayList<>();
         layoutManager = new LinearLayoutManager(this);
@@ -61,5 +83,6 @@ public class CourseContent extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         adapter = new CourseContentAdapter(this,list);
         btn = findViewById(R.id.course_content_btn);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
     }
 }

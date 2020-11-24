@@ -7,6 +7,33 @@
     android:orientation="vertical"
     tools:context=".HomeScreen.CourseContentPackage.AddQuestion">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_question_question"
+        android:hint="Add Question"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_question_tags"
+        android:hint="Topic Tags"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/add_question_image"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_question_solution"
+        android:hint="Link "/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:id="@+id/add_question_add"/>
 
 
 

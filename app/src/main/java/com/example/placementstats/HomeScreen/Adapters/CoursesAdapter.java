@@ -102,7 +102,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseVi
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, CourseList.class);
-                    intent.putExtra("courseName",courseName.getText().toString());
+                    intent.putExtra(context.getString(R.string.CourseName),courseName.getText().toString());
                     context.startActivity(intent);
                 }
             });

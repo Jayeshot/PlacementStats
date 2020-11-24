@@ -2,10 +2,16 @@
     <string name="app_name">PlacementStats</string>
     <string name="UserInfo">UserInfo</string>
     <string name="CourseImage">CourseImage</string>
+    <string name="CourseName">CourseName</string>
+    <string name="CourseId">CourseId</string>
+
     <string name="CourseThumbnail">CourseThumbnail</string>
     <string name="CourseCategory">CourseCategory</string>
     <string name="Courses">Courses</string>
     <string name="SeeMore"><u>See More</u></string>
+    <string name="ProgrammingQuestionImage">ProgrammingQuestionImage</string>
+    <string name="ProgrammingQuestions">ProgrammingQuestions</string>
+
 
 
 </resources>

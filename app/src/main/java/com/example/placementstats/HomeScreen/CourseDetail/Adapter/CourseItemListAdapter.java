@@ -22,6 +22,13 @@ public class CourseItemListAdapter extends RecyclerView.Adapter<CourseItemListAd
 
     private Context context;
     private List<CourseContentItemModel> list;
+    private String courseName;
+
+    public CourseItemListAdapter(Context context, List<CourseContentItemModel> list, String courseName) {
+        this.context = context;
+        this.list = list;
+        this.courseName = courseName;
+    }
 
     public CourseItemListAdapter(Context context, List<CourseContentItemModel> list) {
         this.context = context;
@@ -38,6 +45,7 @@ public class CourseItemListAdapter extends RecyclerView.Adapter<CourseItemListAd
     @Override
     public void onBindViewHolder(@NonNull CourseItemViewHolder holder, int position) {
         Picasso.get().load(Uri.parse(list.get(position).getThumbnail())).placeholder(R.mipmap.ic_launcher).into(holder.image);
+        holder.courseId = list.get(position).getId();
     }
 
     public void setData(List<CourseContentItemModel> list){
@@ -52,6 +60,7 @@ public class CourseItemListAdapter extends RecyclerView.Adapter<CourseItemListAd
     public class CourseItemViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView image;
+        private String courseId;
 
         public CourseItemViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +70,8 @@ public class CourseItemListAdapter extends RecyclerView.Adapter<CourseItemListAd
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, CourseContent.class);
+                    intent.putExtra(context.getString(R.string.CourseName),courseName);
+                    intent.putExtra(context.getString(R.string.CourseId),courseId);
                     context.startActivity(intent);
                 }
             });
