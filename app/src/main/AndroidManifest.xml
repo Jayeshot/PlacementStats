@@ -14,7 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeScreen.CourseContentPackage.AddQuestion"></activity>
+        <activity android:name=".HomeScreen.addTip"></activity>
+        <activity android:name=".HomeScreen.valuableTips" />
+        <activity android:name=".HomeScreen.CourseContentPackage.AddQuestion" />
         <activity android:name=".HomeScreen.ProgrammingSolutionWebView" />
         <activity android:name=".HomeScreen.CourseContentPackage.CourseContent" />
         <activity android:name=".HomeScreen.tempAddCourse" />

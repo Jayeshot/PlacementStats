@@ -73,6 +73,7 @@ public class otpVerification extends AppCompatActivity {
 
     private void sendVerificationCode(String phoneNumber) {
 
+
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(auth)
                         .setPhoneNumber("+91"+phoneNumber)       // Phone number to verify

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.placementstats.HomeScreen.CourseContentPackage.CourseContent;
 import com.example.placementstats.HomeScreen.Models.CourseContentItemModel;
+import com.example.placementstats.HomeScreen.valuableTips;
 import com.example.placementstats.R;
 import com.squareup.picasso.Picasso;
 
@@ -69,10 +70,16 @@ public class CourseItemListAdapter extends RecyclerView.Adapter<CourseItemListAd
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, CourseContent.class);
-                    intent.putExtra(context.getString(R.string.CourseName),courseName);
-                    intent.putExtra(context.getString(R.string.CourseId),courseId);
-                    context.startActivity(intent);
+                    if(courseName.equals("Placement Experience")){
+                        Intent intent = new Intent(context, valuableTips.class);
+                        context.startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(context, CourseContent.class);
+                        intent.putExtra(context.getString(R.string.CourseName),courseName);
+                        intent.putExtra(context.getString(R.string.CourseId),courseId);
+                        context.startActivity(intent);
+                    }
+
                 }
             });
 

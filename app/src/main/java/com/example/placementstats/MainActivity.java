@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
-        if(auth!=null){
+        if(auth.getCurrentUser()!=null){
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
             finish();
